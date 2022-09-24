@@ -4,3 +4,10 @@
 --------------------------------------
 - 서버는 Node.js 사용 (express)
 - REST API는 axios사용해서 호출
+
+--------------------------------
+- [x] Node.js initialize
+- [x] Test Authentication
+- [ ] Manage method to keep the data
+- [ ] Open Purchase Window
+- [ ] Conduct Purchase
