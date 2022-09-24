@@ -1,0 +1,30 @@
+{
+  "name": "pilotproject_purchasemodule_payple",
+  "version": "1.0.0",
+  "description": "--------------------------------------\r - Payple을 사용하여 결제모듈에 대한 파일럿 프로젝트",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyumKyum/pilotProject_PurchaseModule_Payple.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KyumKyum/pilotProject_PurchaseModule_Payple/issues"
+  },
+  "homepage": "https://github.com/KyumKyum/pilotProject_PurchaseModule_Payple#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7"
+  }
+}
