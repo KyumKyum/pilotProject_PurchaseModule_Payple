@@ -1,10 +1,12 @@
 import express from 'express';
-import path from 'path'
+import * as dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import session from 'express-session';
 import morgan from 'morgan';
 import {router} from './routes/routes.js';
 
 const app = express(); //create express application
+dotenv.config();
 
 app.set('port', 4000); //set port to 4000
 
