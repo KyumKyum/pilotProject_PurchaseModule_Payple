@@ -1,7 +1,5 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
-import session from 'express-session';
 import morgan from 'morgan';
 import {router} from './routes/routes.js';
 
@@ -14,7 +12,6 @@ app.set('port', 4000); //set port to 4000
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(cookieParser());
 
 //route to node endpoint - RESTAPI
 app.get('/', (req,res) => {

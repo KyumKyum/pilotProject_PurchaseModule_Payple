@@ -1,5 +1,6 @@
 import express from 'express';
 import axios from 'axios';
+import {redisClient} from '../../cacheDB.js'
 
 export const authRouter = express.Router();
 
@@ -26,20 +27,34 @@ Return:
     AuthKey: Access Token value after partner authentication
     ReturnURL: neccessary payple domain url for purchase request after partner authentication.
  */
-authRouter.post('/partner', (req, res) => {
+authRouter.post('/partner', async (req, res) => {
     const data = {
         cst_id: req.body.cst_id,
         custKey: req.body.custKey
     }
-    axios({
-        method: 'post',
-        url: process.env.URL,
-        data: data
-    }).then((axiosRes) => {
-        //console.log(axiosRes.data);
-        console.log(axiosRes.data.AuthKey);
-        console.log(axiosRes.data.return_url);
-        //res.cookie("AuthKey", axiosRes.data.AuthKey);
-        //res.cookie("payReqURL",axiosRes.data.return_url);
-    })
+
+    try {
+
+        await redisClient.connect();
+        const resultData = await axios({
+            method: 'post',
+            url: process.env.URL,
+            data: data
+        })
+    
+        const receivedData = {
+            authKey: resultData.data.AuthKey,
+            returnURL: resultData.data.return_url
+        }
+
+        console.log(receivedData);
+
+        redisClient.set('AUTH',JSON.stringify(receivedData));
+    } catch (e){
+        console.log("Error: " + e.message);
+    }
+
+    const redisData = await redisClient.get('AUTH');
+
+    console.log("REDIS: " + redisData);
 })
