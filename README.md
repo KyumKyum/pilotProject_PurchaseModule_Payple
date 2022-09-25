@@ -16,4 +16,5 @@
     프론트에서 Payple에서 지정해준 링크로 쏴주면
     결제와 해당 Response까지 다 해준다.
     백엔드에서 하는게 아니었움...ㅋㅋ
-- [ ] Conduct Purchase
+- [x] Test Purchase
+- [x] Test Refund
